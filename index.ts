@@ -7,6 +7,7 @@ const imageName = "ruby-app";
 const myImage = new docker.Image(imageName, {
     imageName: pulumi.interpolate`localhost:5000/${imageName}:latest`,
     build: {
+        env: {"DOCKER_BUILDKIT": "1"},
         context: "./app",
     },
 });
